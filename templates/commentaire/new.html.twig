@@ -1,0 +1,11 @@
+{% extends 'front/com.html.twig' %}
+
+{% block title %}New Commentaire{% endblock %}
+
+{% block body %}
+    <h1>Create new Commentaire</h1>
+
+    {{ include('commentaire/_form.html.twig') }}
+<br>
+    <button class="btn" style="background-color:grey;border-color: black;color: blue"><a href={{asset("index.php/post/front")}}>back to Posts</a></button>
+{% endblock %}

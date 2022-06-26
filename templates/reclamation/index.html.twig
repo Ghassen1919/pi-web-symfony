@@ -1,0 +1,54 @@
+{% extends 'back/recl.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+    <h1>Reclamation</h1>
+<center><div class="col-md-6 col-lg-3" >
+			
+				
+				<div class="sucess">
+					<h4>number reclamation total</h4>
+					<p>
+						<h4>{{nbrprest}}</h4>
+					</p>
+				</div>
+			
+</div>	
+</center>	
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>NomRec</th>
+                <th>DateRec</th>
+                <th>DescriRec</th>
+                <th>Traite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                
+                <td>{{ reclamation.nomRec }}</td>
+                <td>{{ reclamation.dateRec ? reclamation.dateRec|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.descriRec | raw }}</td>
+                <td>{{ reclamation.traite }}</td>
+                <td>
+                    <button class="btn" style="background-color:black;border-color: white; color: white">  <a href="{{ path('app_reclamation_show', {'idRec': reclamation.idRec}) }}">show</a></button>
+                 <button class="btn" style="background-color:#C0392B ;border-color: black;color: purple">   <a href="{{ path('app_reclamation_edit', {'idRec': reclamation.idRec}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+ <button class="btn" style="background-color:#2E4053  ;border-color: black;color: purple"><a href="{{ path('print_reclamations') }}">print</a></button>
+</div>
+    
+{% endblock %}
